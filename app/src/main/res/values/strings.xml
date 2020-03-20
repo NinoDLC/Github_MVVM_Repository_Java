@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Github_MVVM_Repository_Java</string>
+    <string name="go">Go</string>
+    <string name="github_username">Github username</string>
+</resources>
