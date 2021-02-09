@@ -16,8 +16,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import fr.delcey.github_mvvm_repository_java.R;
 import fr.delcey.github_mvvm_repository_java.ViewModelFactory;
-import fr.delcey.github_mvvm_repository_java.view.model.ItemModelUi;
-import fr.delcey.github_mvvm_repository_java.view.model.ModelUi;
+import fr.delcey.github_mvvm_repository_java.view.model.MainItemViewState;
+import fr.delcey.github_mvvm_repository_java.view.model.MainViewState;
 
 import static android.content.Intent.ACTION_VIEW;
 
@@ -63,17 +63,17 @@ public class MainActivity extends AppCompatActivity implements MainRecyclerViewA
             }
         });
 
-        mainViewModel.getUiModelsLiveData().observe(this, new Observer<ModelUi>() {
+        mainViewModel.getViewStatesLiveData().observe(this, new Observer<MainViewState>() {
             @Override
-            public void onChanged(ModelUi modelUi) {
-                swipeRefreshLayout.setRefreshing(modelUi.isLoading());
-                adapter.submitList(modelUi.getItemModelUiList());
+            public void onChanged(MainViewState mainViewState) {
+                swipeRefreshLayout.setRefreshing(mainViewState.isLoading());
+                adapter.submitList(mainViewState.getMainItemViewStateList());
             }
         });
     }
 
     @Override
-    public void onItemClicked(ItemModelUi itemModelUi) {
-        startActivity(new Intent(ACTION_VIEW).setData(Uri.parse(itemModelUi.getRepositoryUrl())));
+    public void onItemClicked(MainItemViewState mainItemViewState) {
+        startActivity(new Intent(ACTION_VIEW).setData(Uri.parse(mainItemViewState.getRepositoryUrl())));
     }
 }

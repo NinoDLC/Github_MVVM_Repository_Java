@@ -2,7 +2,7 @@ package fr.delcey.github_mvvm_repository_java.data.github;
 
 import java.util.List;
 
-import fr.delcey.github_mvvm_repository_java.data.github.model.GithubRepo;
+import fr.delcey.github_mvvm_repository_java.data.github.model.GithubProject;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,5 +13,5 @@ import retrofit2.http.Path;
  */
 public interface GithubApi {
     @GET("users/{user}/repos")
-    Call<List<GithubRepo>> getRepos(@Path("user") String user);
+    Call<List<GithubProject>> getRepos(@Path("user") String user);
 }

@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "fr.delcey.github_mvvm_repository_java"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -53,10 +53,10 @@ dependencies {
     testImplementation "android.arch.core:core-testing:$test_android_core_version"
     // LiveData tools for Unit Testing
     testImplementation "org.assertj:assertj-core:$test_assertj_version" // Fluent assertions
-    testImplementation "com.jakewharton.threetenabp:threetenabp:$test_threetenabp_version"
     // Use "Clock" and ABP in tests
-    testImplementation "com.squareup.retrofit2:retrofit-mock:$test_retrofit_mock_version"
+    testImplementation "com.jakewharton.threetenabp:threetenabp:$test_threetenabp_version"
     // Use fake "Calls"
+    testImplementation "com.squareup.retrofit2:retrofit-mock:$test_retrofit_mock_version"
 
     // Android tests
     androidTestImplementation "androidx.test:runner:$android_test_runner_version"

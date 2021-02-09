@@ -5,7 +5,7 @@ import androidx.annotation.Keep;
 import com.google.gson.annotations.SerializedName;
 
 @Keep
-public class GithubRepo {
+public class GithubProject {
     @SerializedName("html_url")
     private final String htmlUrl;
     @SerializedName("name")
@@ -13,7 +13,7 @@ public class GithubRepo {
     @SerializedName("owner")
     private final Owner owner;
 
-    public GithubRepo(String htmlUrl, String name, Owner owner) {
+    public GithubProject(String htmlUrl, String name, Owner owner) {
         this.htmlUrl = htmlUrl;
         this.name = name;
         this.owner = owner;

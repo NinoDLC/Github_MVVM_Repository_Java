@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fr.delcey.github_mvvm_repository_java.R;
-import fr.delcey.github_mvvm_repository_java.view.model.ItemModelUi;
+import fr.delcey.github_mvvm_repository_java.view.model.MainItemViewState;
 
-public class MainRecyclerViewAdapter extends ListAdapter<ItemModelUi, MainRecyclerViewAdapter.MainViewHolder> {
+public class MainRecyclerViewAdapter extends ListAdapter<MainItemViewState, MainRecyclerViewAdapter.MainViewHolder> {
 
-    private OnItemClickedListener listener;
+    private final OnItemClickedListener listener;
 
     protected MainRecyclerViewAdapter(OnItemClickedListener listener) {
         super(new MainDiffCallback());
@@ -54,7 +54,7 @@ public class MainRecyclerViewAdapter extends ListAdapter<ItemModelUi, MainRecycl
             button = itemView.findViewById(R.id.main_item_btn);
         }
 
-        public void bind(final ItemModelUi item, final OnItemClickedListener listener) {
+        public void bind(final MainItemViewState item, final OnItemClickedListener listener) {
             name.setText(item.getRepositoryName());
             author.setText(item.getAuthor());
             button.setOnClickListener(new View.OnClickListener() {
@@ -67,18 +67,18 @@ public class MainRecyclerViewAdapter extends ListAdapter<ItemModelUi, MainRecycl
     }
 
     interface OnItemClickedListener {
-        void onItemClicked(ItemModelUi itemModelUi);
+        void onItemClicked(MainItemViewState mainItemViewState);
     }
 
-    private static class MainDiffCallback extends DiffUtil.ItemCallback<ItemModelUi> {
+    private static class MainDiffCallback extends DiffUtil.ItemCallback<MainItemViewState> {
 
         @Override
-        public boolean areItemsTheSame(@NonNull ItemModelUi oldItem, @NonNull ItemModelUi newItem) {
-            return false;
+        public boolean areItemsTheSame(@NonNull MainItemViewState oldItem, @NonNull MainItemViewState newItem) {
+            return oldItem.getRepositoryUrl() != null && oldItem.getRepositoryUrl().equals(newItem.getRepositoryUrl());
         }
         @Override
-        public boolean areContentsTheSame(@NonNull ItemModelUi oldItem, @NonNull ItemModelUi newItem) {
-            return false;
+        public boolean areContentsTheSame(@NonNull MainItemViewState oldItem, @NonNull MainItemViewState newItem) {
+            return oldItem.equals(newItem);
         }
     }
 }
